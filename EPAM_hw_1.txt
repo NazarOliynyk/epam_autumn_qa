@@ -1,0 +1,191 @@
+1.	Перейдіть за посиланням https://www.epam.com/.
+ Напишіть локатор для знаходження наступних посилань (результатом має бути масив посилань(), розміром 6)
+
+# CSS- nav.top-navigation-ui>ul>li>span>a
+
+# execute this JS script to find the array of elements and iterate through it to see all elements -
+
+	var x = document.querySelectorAll("nav.top-navigation-ui>ul>li>span>a");
+
+	x.forEach(function(element) {
+  
+		console.log(element.innerHTML);
+
+	});
+
+
+# XPath-  //nav[@class='top-navigation-ui']/ul/li/span/a
+
+# execute this JS script to find the array of elements and iterate through it to see all elements -
+
+
+	function getElementByXpath(path) {
+ 
+		 return document.evaluate(path,
+ 			document,
+ 			null,
+ 			XPathResult.FIRST_ORDERED_NODE_TYPE,
+ 			null).singleNodeValue.innerHTML;
+}
+
+	for(var i=1; i<=6;i++){
+ 
+		console.log( getElementByXpath('//nav[@class="top-navigation-ui"]/ul/li[' +i+ ']/span/a') );}
+
+
+******************************************************************************************************************
+
+2. Перейдіть: https://www.training.by/. З ‘training list’ оберіть локацію ‘Belarus, Minsk’ Знайдіть
+зображення усіх календарів навпроти яких кількість тижнів містить цифру 1.
+
+
+#XPath-
+  //div[@class="training-item__inner"] 
+	[descendant::div[@ng-show="!itemTraining.IsEndless" and contains(text(),'1')] and descendant::text()[contains(., "Минск, Беларусь")]]
+
+# it does not work since there is no locations that matches, although if change to 'Гомель,Беларусь' - it works:
+
+  //div[@class="training-item__inner"] 
+	[descendant::div[@ng-show="!itemTraining.IsEndless" and contains(text(),'1')] and descendant::text()[contains(., "Гомель, Беларусь")]]
+
+*******************************************************************************************************************
+
+3. Перейдіть за посиланням: https://www.training.by/News. Знайдіть усі заголовки новин за квітень 2018
+року. 
+
+		
+
+	use this link-  https://www.training.by/#!/News
+
+  
+#CSS -
+	 div.news-page-list > section > div.news-page-list__items > div > div.tab-component > div > div > div > div.news-page-item__title > a
+
+
+# execute this JS script to find the array of elements and iterate through it to see all elements -
+
+  
+	var x = document.querySelectorAll(" div.tab-component > div > div > div > div.news-page-item__title > a");
+
+	
+	x.forEach(function(element) {
+
+  
+		console.log(element.innerHTML);
+
+
+	});
+
+#XPath - 
+//div[@class="tab-component"]/div/div/div/div[2]/a
+
+# execute this JS script to find the array of elements and iterate through it to see all elements -
+
+
+	var sizeOfArray= document.evaluate( 'count(//div[@class="tab-component"]/div/div/div/div[2]/a)', 
+		 document,
+		 null,
+		 XPathResult.ANY_TYPE, 
+		null ).numberValue;
+
+
+	function getElementByXpath(path) {
+
+ 
+		 	return document.evaluate(path,
+
+ 			document,
+ 		
+			null,
+ 			
+			XPathResult.FIRST_ORDERED_NODE_TYPE,
+
+ 			null).singleNodeValue.innerHTML;
+}
+
+
+	
+		for(var i=1; i<=sizeOfArray;i++){
+ 
+		console.log( getElementByXpath('//div[@class="tab-component"]/div/div/div['+i+']/div[2]/a')
+		 );}
+
+*************************************************************************************************************************
+
+4. Перейдіть за посиланням: https://www.epam.com/careers/job-listings?recruitingUrl=%2Fcareers%2Fjoblistings%2Fjob&query=Java&country=Ukraine&city=Lviv&sort=relevance.
+Знайдіть усі назви вакансій в яких є слово ‘Automation’.
+
+#XPath -
+
+//div[@class='section']/section/div/div[1]/div/section/ul/li[descendant::text()[contains(., "Automation")]]
+
+# execute this JS script to find the array of elements and iterate through it to see all elements -
+
+	var sizeOfArray= document.evaluate( 
+		'count(//div[@class="section"]/section/div/div[1]/div/section/ul/li[descendant::text()[contains(.,"Automation")]])',
+ 
+		 document,
+
+		 null,
+	
+		 XPathResult.ANY_TYPE, 
+       
+		null ).numberValue;
+
+	function getElementByXpath(path) {
+
+ 
+
+		 	return document.evaluate(path,
+
+ 
+			document,
+ 		
+		
+			null,
+ 	
+		
+	XPathResult.FIRST_ORDERED_NODE_TYPE,
+
+ 	
+			null).singleNodeValue.innerHTML;
+}
+
+
+
+	
+		
+		for(var i=1; i<=sizeOfArray;i++){
+ 
+	
+		console.log( getElementByXpath('//div[@class="section"]/section/div/div[1]/div/section/ul/li[descendant::text()[contains(., "Automation")]]['+i+']')
+
+		 );}
+
+# it prints the whole of 3 <li> for job positions with Automation
+
+*****************************************************************************************************************************
+
+5. Перейдіть за посиланням: https://www.epam.com/about/who-we-are/events . Натисніть “PAST
+EVENTS”. Знайдіть усі кнопки “LEARN MORE” (<a...>) для подій які відбулись в листопаді. 
+
+#XPath-
+ //div[@class="tabs__item js-tabs-item active"]/div/div/ul/li/div[3]/a/span
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
