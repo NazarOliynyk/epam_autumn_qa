@@ -192,137 +192,61 @@ EVENTSФ. «найд≥ть ус≥ кнопки УLEARN MOREФ (<a...>) дл€ под≥й €к≥ в≥дбулись в лис
 
 1. «найд≥ть ус≥ УAcquisition datesФ дл€ €ких крањною Ї USA. (–езультатом
 маЇ бути масив з 7 span елемент≥в €к≥ позначен≥ пр€мокутниками на
-скр≥ншот≥).
-
+скр≥ншот≥). 
 
 #XPath-
 
 //table[@class='wikitable sortable jquery-tablesorter']/tbody/tr[descendant::text()[contains(., "USA")]]/td[1]
 
-
 # execute this JS script to find the array of elements and iterate through it to see all elements with date-
 
 	var sizeOfArray= document.evaluate( 
-
-'count(  //table[@class="wikitable sortable jquery-tablesorter"]/tbody/tr[descendant::text()[contains(., "USA")]]/td[1])',
-
-
- 
-		 document,
-
-
-	
-	 null,
-
-
-		 XPathResult.ANY_TYPE,
- 
-
-       
-	 null ).numberValue;
-
-
-
+	'count(  //table[@class="wikitable sortable jquery-tablesorter"]/tbody/tr[descendant::text()[contains(., "USA")]]/td[1])',
+ 	document,
+ 	null,
+ 	XPathResult.ANY_TYPE,
+ 	null ).numberValue;
 	console.log(sizeOfArray);
-
-
+	
 	function getElementByXpath(path) {
-
-
- 
-
-		 	return document.evaluate(path,
-
- 
-
-			document,
- 		
-
-		
+	return document.evaluate(path,
+	document,
 	null,
+	XPathResult.FIRST_ORDERED_NODE_TYPE,
+	null).singleNodeValue.innerHTML;}
 
- 	
-		
-XPathResult.FIRST_ORDERED_NODE_TYPE,
-
-
- 	
-		null).singleNodeValue.innerHTML;
-}
-
-
-
-
-
-
-	
-		
-for(var i=1; i<=sizeOfArray;i++){
- 
-
-	
-		console.log( getElementByXpath('//table[@class="wikitable sortable jquery-tablesorter"]/tbody/tr[descendant::text()[contains(., "USA")]]['+i+']/td[1]')
-
-	
-	 );}
+	for(var i=1; i<=sizeOfArray;i++){
+	console.log( getElementByXpath('//table[@class="wikitable sortable jquery-tablesorter"]/tbody/tr[descendant::text()[contains(., "USA")]]['+i+']/td[1]')
+ 	);}
 
 *******************************************************************************************************************************
-
 2. «найд≥ть лого ≈паму(результатом маЇ бути 1 img). 
 
 #CSS-
-
 table.infobox.vcard > tbody > tr > td > a > img
 
-
 #XPath-
-
 //table[@class="infobox vcard"]/tbody/tr[1]/td/a/img
 
-
 ********************************************************************************************************************************
-
 
 3. «найд≥ть ус≥ пункти зм≥сту в нумерац≥њ €ких м≥ститьс€ цифра
 2(результатом маЇ бути масив з 5 span елемент≥в, €к≥ позначен≥
 пр€мокутниками на скр≥ншот≥)
 
 #XPath -
-
   //*[@id="toc"]/ul/li/a/span[contains(., "2")] /following-sibling::span | //*[@id="toc"]/ul/li/ul/li/a/span[contains(., "2")] /following-sibling::span
 
  - execute the following JS script to calculate the number of paragraphs which contain '2'
 
-
 	var sizeOfArray= document.evaluate('count(//*[@id="toc"]/ul/li/a/span[contains(., "2")] /following-sibling::span | //*[@id="toc"]/ul/li/ul/li/a/span[contains(., "2")] /following-sibling::span)',
-
-				
-
- 
-		 document,
-
-
-
-	
-	 				 null,
-
-
-
-		 				 XPathResult.ANY_TYPE,
-
- 
-
-       
-	 				 null ).numberValue;
-
-
-
-
-
-	console.log(sizeOfArray);
+ 		document,
+ 		null,
+ 		XPathResult.ANY_TYPE,
+ 		null ).numberValue;
+		console.log(sizeOfArray);
 
 ***********************************************************************************************************************************
-
 4. «найд≥ть список посилань доступних мов дл€ ц≥Їњ статт≥ (результатом
 маЇ бути масив посилань (<aЕ>) з 5 елемент≥в). 
 
@@ -331,134 +255,50 @@ table.infobox.vcard > tbody > tr > td > a > img
 #p-lang > div > ul > li > a
 
 # execute this JS script to find the array of elements and iterate through it to see the name of all elements-
-
-
-	var x = document.querySelectorAll("#p-lang > div > ul > li > a");
-
-
 	
+	var x = document.querySelectorAll("#p-lang > div > ul > li > a");
 	x.forEach(function(element) {
-
-  
-		console.log(element.innerHTML);
-
-
+	console.log(element.innerHTML);
 	});
-
-
-
 
 #XPath -
 
 //*[@id="p-lang"]/div/ul/li/a
 
-
 # execute this JS script to find the array of elements and iterate through it to see the name of all elements-
-
+	
 	var sizeOfArray= document.evaluate('count(//*[@id="p-lang"]/div/ul/li/a)',
-
-
-				
-
- 
-		 document,
-
-
-
-
-	
-	 				 null,
-
-
-
-
-		 				 XPathResult.ANY_TYPE,
-
-
- 
-
-       
-	 				 null ).numberValue;
-
-
-
-
-
-	
+ 	document,
+ 	null,
+	 XPathResult.ANY_TYPE,
+ 	null ).numberValue;
 	console.log(sizeOfArray);
-	
+
 	function getElementByXpath(path) {
-			 return document.evaluate(path,
+ 	return document.evaluate(path,
+ 	document,
+	null,
+	XPathResult.FIRST_ORDERED_NODE_TYPE,	
+	null).singleNodeValue.innerHTML;}
 
+	for(var i=1; i<=sizeOfArray;i++){
+	console.log( getElementByXpath('//*[@id="p-lang"]/div/ul/li['+i+']/a')
+ 	);}
 
- 
-
-			 document,
-
- 		
-
-       	null,
-
-
- 	
-		
-XPathResult.FIRST_ORDERED_NODE_TYPE,
-
-
-
- 	
-		null).singleNodeValue.innerHTML;
-}
-
-
-
-
-
-
-
-	
-	
-	
-for(var i=1; i<=sizeOfArray;i++){
-
- 
-
-	
-		console.log( getElementByXpath('//*[@id="p-lang"]/div/ul/li['+i+']/a')
-
-	
-
-	 );}
-
-
-***************************************************************************************************************************************
+**************************************************************************************************************************************
 5. «найд≥ть ус≥ посиланн€ п≥д заголовком Tools. (–езультатом маЇ бути
 масив з 8 посильлань (<aЕ>))
-
 
 #CSS-
 
 #p-tb>div.body>ul>li > a
 
-
 # execute this JS script to find the array of elements and iterate through it to see the name of all elements-
 
 	var x = document.querySelectorAll("#p-tb>div.body>ul>li > a");
-
-
-	
-
-	
 	x.forEach(function(element) {
-
-  
-	
 	console.log(element.innerHTML);
-
-
-
 	});
-
 
 #XPath-
 
@@ -467,98 +307,21 @@ for(var i=1; i<=sizeOfArray;i++){
 # execute this JS script to find the array of elements and iterate through it to see the name of all elements-
 
 	var sizeOfArray= document.evaluate('count(//*[@id="p-tb"]/div/ul/li/a)',
+ 	document,
+ 	null,
+ 	XPathResult.ANY_TYPE,
+ 	null ).numberValue;
 
-
-
-			
-
- 
-		 document,
-
-
-
-
-	
-
-	 				 null,
-
-
-
-
-		
- 					 XPathResult.ANY_TYPE,
-
-
-
- 
-
-       
-	 			 null ).numberValue;
-
-
-
-
-
-	
-
-			
 	console.log(sizeOfArray);
-	
-	
 
 	function getElementByXpath(path) {
+ 	return document.evaluate(path,
+	 document,
+ 	null,
+	XPathResult.FIRST_ORDERED_NODE_TYPE,
+ 	null).singleNodeValue.innerHTML;}
 
-			 return document.evaluate(path,
+	for(var i=1; i<=sizeOfArray;i++){
 
-
-
- 
-
-			 document,
-
- 	
-	
-
-       		 null,
-
-
- 
-	
-		 
-XPathResult.FIRST_ORDERED_NODE_TYPE,
-
-
-
- 	
-
-		         null).singleNodeValue.innerHTML;
-}
-
-
-
-
-
-
-
-	
-
-
-	
-	
-for(var i=1; i<=sizeOfArray;i++){
-
- 
-
-	
-
-		console.log( getElementByXpath('//*[@id="p-tb"]/div/ul/li['+i+']/a')
-
-	
-
-
-	 );}
-
-
-
-
-
+	console.log( getElementByXpath('//*[@id="p-tb"]/div/ul/li['+i+']/a')
+ 	);}
