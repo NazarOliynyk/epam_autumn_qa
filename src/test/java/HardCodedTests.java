@@ -15,7 +15,7 @@ public class HardCodedTests {
     @Test(description = "Verify 'Trainings' search works properly with searching in 'Skills'")
     public void verifyTrainingsSearchWorksProperlyForSkills() {
 
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe"); //DOWNLOAD DRIVER !
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         WebDriver driver =new ChromeDriver();
 
@@ -118,7 +118,7 @@ public class HardCodedTests {
     @Test(description = "Verify 'Trainings' search works properly with searching in 'News'")
     public void verifyNewsPageMaterialSection() {
 
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe"); //DOWNLOAD DRIVER !
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         WebDriver driver =new ChromeDriver();
 
@@ -209,7 +209,7 @@ public class HardCodedTests {
     @Test(description = "Verify 'Trainings' search works properly with searching in 'Locations'")
     public void verifyLocationsSection() {
 
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe"); //DOWNLOAD DRIVER !
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         WebDriver driver =new ChromeDriver();
 
@@ -249,16 +249,10 @@ public class HardCodedTests {
 
        searchTrainingArrow.click();
 
-//        try {
 //            executor.executeScript("arguments[0].click();", searchTrainingArrow);
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+
 
                     driver.quit();
-
-
 
     }
 
