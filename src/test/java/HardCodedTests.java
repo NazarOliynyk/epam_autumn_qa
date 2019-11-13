@@ -190,6 +190,7 @@ public class HardCodedTests {
         }
 
         materialsButton.click();
+
         List<WebElement> skillsSearchResultsList = driver.
                 findElements(By.cssSelector("div.news-page-item> div.news-page-item__title > a"));
 
@@ -245,11 +246,32 @@ public class HardCodedTests {
 
 
         WebElement searchTrainingArrow = (WebElement) waitWithoutException.until(ExpectedConditions
-                .visibilityOfElementLocated(By.className("filter-toggle-mobile__arrow-icon")));
+                .visibilityOfElementLocated(By.xpath("//*[@id=\"training\"]/div[2]/div[1]/form/input")));
 
        searchTrainingArrow.click();
 
-//            executor.executeScript("arguments[0].click();", searchTrainingArrow);
+        WebElement countrySelect = (WebElement) waitWithoutException.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("div.drop-down-choose__frame > div:nth-child(1) > div > div.location__countries > ul > li:nth-child(5)")));
+
+        countrySelect.click();
+
+
+        WebElement citySelect = (WebElement) waitWithoutException.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("div.location__cities > ul > li:nth-child(4) > label")));
+
+        citySelect.click();
+
+
+        List<WebElement> lvivPositions = driver.
+                findElements(By.xpath("//*[@id=\"training\"]/div[4]/div/div/div[3]"));
+
+        lvivPositions.forEach(element->
+                System.out.println(element.getText())
+        );
+
+        lvivPositions.forEach(element->
+                Assert.assertTrue(element.getText().contains("Lviv"))
+        );
 
 
                     driver.quit();
