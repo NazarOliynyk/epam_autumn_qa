@@ -11,7 +11,7 @@ public class DriverFactory {
 
     private static WebDriver driver;
 
-   protected void buildDriver(final String browserName){
+   public static void buildDriver(final String browserName){
 
         if(browserName.equalsIgnoreCase(MainEnums.CHROME_DRIVER.getValue())){
             System.setProperty(MainEnums.CHROME_DRIVER.getValue(),
@@ -25,16 +25,18 @@ public class DriverFactory {
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
     }
 
     public static WebDriver getDriver() {
         return driver;
     }
 
-    protected void quitDriver(){
+    public static void quitDriver(){
         if(driver!= null){
             driver.quit();
             driver= null;
         }
     }
+
 }

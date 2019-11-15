@@ -9,10 +9,10 @@ import java.util.List;
 
 public abstract class AbstractPage {
 
-    private FluentWait<WebDriver> wait = new FluentWait<>(DriverFactory.getDriver())
+     private FluentWait<WebDriver> wait = new FluentWait<>(DriverFactory.getDriver())
             .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
 
-    void  goToPage(final String url) {
+    public void goToPageURL(final String url) {
 
         DriverFactory.getDriver().get(url);
     }
@@ -37,5 +37,4 @@ public abstract class AbstractPage {
             return false;
         }
     }
-
 }

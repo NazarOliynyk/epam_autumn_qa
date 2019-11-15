@@ -1,11 +1,16 @@
 package pageObjects;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-public class LoginationPage extends AbstractPage {
+public class LoginationPage extends AbstractPage{
 
-//    private static final Logger LOG = Logger.getLogger(LoginationPage.class);
+//    @Override
+//    void goToPageURL(String url) {
+//        super.goToPageURL(url);
+//    }
+
+    private By signInForm = By.xpath("//p[@class='header-auth__signin']//span");
 
     private By mailInput = By.id("signInEmail");
 
@@ -13,30 +18,24 @@ public class LoginationPage extends AbstractPage {
 
     private By signInButton = By.className("popup-reg-sign-in-form__sign-in");
 
-    private static By loginFailedErrorMessage = By.xpath("//div[text()='Login failed. Please try again.']");
+    private By responseLogination = By.cssSelector("div.popup__error-message.ng-binding");
 
-    public LoginationPage enterEmail(String email){
+    //div[@class='user-info__name' and contains(text(),'ivanhorintest')
+    private By userInfo = By.xpath("//div[@class='user-info__name']");
+
+    public void logIn(String email, String password){
+        getElement(signInForm).click();
         getElement(mailInput).sendKeys(email);
-//        LOG.info("Mail was entered.");
-        return this;
-    }
-
-    public LoginationPage enterPassword(String password){
         getElement(passwordInput).sendKeys(password);
-//        LOG.info("Password was entered.");
-        return this;
-    }
-
-
-
-    public  HomePage clickSignInButton(){
         getElement(signInButton).click();
-        // LOG.info("Sign in button clicked.");
-        return new HomePage();
     }
 
-    public static boolean isLoginFailedErrorMessageDisplayed() {
-        //        LOG.info(String.format("Is 'Login Failed' error message displayed': '%s'",isDisplayed));
-        return isDisplayed(loginFailedErrorMessage);
+    public WebElement userCredentials(){
+        return getElement(userInfo);
+    }
+
+    // rename to errormessage
+    public WebElement getResponse(){
+        return getElement(responseLogination);
     }
 }
