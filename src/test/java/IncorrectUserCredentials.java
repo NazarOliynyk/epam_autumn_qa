@@ -5,14 +5,11 @@ import pageObjects.LoginationPage;
 
 public class IncorrectUserCredentials extends BaseTest{
 
-//    public IncorrectUserCredentials(String driverName, String url) {
-//        super(MainEnums.CHROME_DRIVER.getValue(), MainEnums.HOME_PAGE_URL.getValue());
-//    }
-
     @Test(description = "Verify logination with incorrect user credentials")
     public void verifyLoginationWithIncorrectCredentials(){
 
         LoginationPage loginationPage = new LoginationPage();
+        loginationPage.goToPageURL(MainEnums.HOME_PAGE_URL.getValue());
 
         loginationPage.logIn("ivanhorintest@gmail.com", "ivanhorintestWRONGPassword");
 
