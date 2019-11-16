@@ -1,21 +1,25 @@
-import enums.MainEnums;
+import businessObjects.LoginationBO;
+import enums.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.LoginationPage;
 
 public class LoginationTest extends BaseTest{
 
-
     @Test(description = "Verify logination and appearance of user credentials on the page")
     public void verifyLogination(){
 
 
-        LoginationPage loginationPage = new LoginationPage();
-        loginationPage.goToPageURL(MainEnums.HOME_PAGE_URL.getValue());
+        LoginationBO loginationBO = new LoginationBO();
 
-        loginationPage.logIn("ivanhorintest@gmail.com", "ivanhorintestPassword");
+        loginationBO.goToPageURL(URLs.HOME_PAGE_URL.getValue());
 
-        Assert.assertEquals("ivanhorintest", loginationPage.userCredentials().getText());
+        loginationBO.logIn("ivanhorintest@gmail.com", "ivanhorintestPassword");
+
+        Assert.assertTrue(
+                loginationBO.isUserCredentialsDisplayed(), "User credentials are NOT displayed");
+
+        Assert.assertEquals("ivanhorintest", loginationBO.getUserCredentials().getText());
     }
 
 }

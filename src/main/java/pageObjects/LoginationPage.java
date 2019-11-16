@@ -2,40 +2,42 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginationPage extends AbstractPage{
 
-//    @Override
-//    void goToPageURL(String url) {
-//        super.goToPageURL(url);
-//    }
+    public By signInForm = By.xpath("//p[@class='header-auth__signin']//span");
 
-    private By signInForm = By.xpath("//p[@class='header-auth__signin']//span");
+    public By mailInput = By.id("signInEmail");
 
-    private By mailInput = By.id("signInEmail");
+    public By passwordInput = By.id("signInPassword");
 
-    private By passwordInput = By.id("signInPassword");
+    public By signInButton = By.className("popup-reg-sign-in-form__sign-in");
 
-    private By signInButton = By.className("popup-reg-sign-in-form__sign-in");
+    public By errorMessage = By.cssSelector("div.popup__error-message.ng-binding");
 
-    private By responseLogination = By.cssSelector("div.popup__error-message.ng-binding");
+    public By userCredentials = By.xpath("//div[@class='user-info__name']");
 
-    //div[@class='user-info__name' and contains(text(),'ivanhorintest')
-    private By userInfo = By.xpath("//div[@class='user-info__name']");
 
-    public void logIn(String email, String password){
-        getElement(signInForm).click();
-        getElement(mailInput).sendKeys(email);
-        getElement(passwordInput).sendKeys(password);
-        getElement(signInButton).click();
-    }
 
-    public WebElement userCredentials(){
-        return getElement(userInfo);
-    }
+    // using @FindBy annotation-
 
-    // rename to errormessage
-    public WebElement getResponse(){
-        return getElement(responseLogination);
-    }
+//    @FindBy(xpath = "//p[@class='header-auth__signin']//span")
+//    public WebElement signInForm;
+//
+//    @FindBy(id = "signInEmail")
+//    public WebElement mailInput;
+//
+//    @FindBy(id = "signInPassword")
+//    public WebElement passwordInput;
+//
+//    @FindBy(className = "popup-reg-sign-in-form__sign-in")
+//    public WebElement signInButton;
+//
+//    @FindBy(css = "div.popup__error-message.ng-binding")
+//    public WebElement errorMessage;
+//
+//    @FindBy(xpath = "//div[@class='user-info__name']")
+//    public WebElement userCredentials;
+
 }

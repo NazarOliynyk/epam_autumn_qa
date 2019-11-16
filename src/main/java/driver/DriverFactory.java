@@ -1,6 +1,7 @@
 package driver;
 
-import enums.MainEnums;
+import enums.DriverLocations;
+import enums.Drivers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,13 +14,13 @@ public class DriverFactory {
 
    public static void buildDriver(final String browserName){
 
-        if(browserName.equalsIgnoreCase(MainEnums.CHROME_DRIVER.getValue())){
-            System.setProperty(MainEnums.CHROME_DRIVER.getValue(),
-                    MainEnums.CHROME_DRIVER_LOCATION.getValue());
+        if(browserName.equalsIgnoreCase(Drivers.CHROME_DRIVER.getValue())){
+            System.setProperty(Drivers.CHROME_DRIVER.getValue(),
+                    DriverLocations.CHROME_DRIVER_LOCATION.getValue());
             driver=new ChromeDriver();
-        }else if(browserName.equalsIgnoreCase(MainEnums.FIREFOX_DRIVER.getValue())){
-            System.setProperty(MainEnums.FIREFOX_DRIVER.getValue(),
-                    MainEnums.FIREFOX_DRIVER_LOCATION.getValue());
+        }else if(browserName.equalsIgnoreCase(Drivers.FIREFOX_DRIVER.getValue())){
+            System.setProperty(Drivers.FIREFOX_DRIVER.getValue(),
+                    DriverLocations.FIREFOX_DRIVER_LOCATION.getValue());
             driver=new FirefoxDriver();
         }
 

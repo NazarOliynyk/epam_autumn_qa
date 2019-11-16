@@ -1,19 +1,23 @@
-import enums.MainEnums;
+import businessObjects.LoginationBO;
+import enums.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.LoginationPage;
 
 public class IncorrectUserCredentials extends BaseTest{
 
     @Test(description = "Verify logination with incorrect user credentials")
     public void verifyLoginationWithIncorrectCredentials(){
 
-        LoginationPage loginationPage = new LoginationPage();
-        loginationPage.goToPageURL(MainEnums.HOME_PAGE_URL.getValue());
+        LoginationBO loginationBO = new LoginationBO();
 
-        loginationPage.logIn("ivanhorintest@gmail.com", "ivanhorintestWRONGPassword");
+        loginationBO.goToPageURL(URLs.HOME_PAGE_URL.getValue());
+
+        loginationBO.logIn("ivanhorintest@gmail.com", "WRONG__Password");
+
+//        Assert.assertTrue(
+//                loginationBO.isErrorMessageDisplayed(), "Error message is NOT displayed");
 
         Assert.assertEquals("Ошибка авторизации. Пожалуйста, попробуйте еще раз.",
-                loginationPage.getResponse().getText());
+                loginationBO.getErrorMessage().getText());
     }
 }
