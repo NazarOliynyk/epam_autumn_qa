@@ -22,7 +22,33 @@ public abstract class AbstractPage {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    List<WebElement> getElements(By locator) {
+    public static WebElement getElementWithLoop(By locator) {
+
+        WebElement webElement = null;
+        int i = 1;
+        while (i<10){
+            try{
+                webElement =
+                        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+                i= 10;
+            }catch (Exception e){
+                i++;
+            }
+        }
+        return webElement;
+    }
+
+    public static void executeElementWithTimeout(By locator) {
+
+        try {
+            Thread.sleep(3000);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).click();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<WebElement> getElements(By locator) {
 
         return DriverFactory.getDriver().findElements(locator);
     }

@@ -2,6 +2,7 @@ package driver;
 
 import enums.DriverLocations;
 import enums.Drivers;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,7 +31,13 @@ public class DriverFactory {
     }
 
     public static WebDriver getDriver() {
-        return driver;
+
+       return driver;
+    }
+
+    public static JavascriptExecutor getExecutor() {
+
+       return (JavascriptExecutor)driver;
     }
 
     public static void quitDriver(){

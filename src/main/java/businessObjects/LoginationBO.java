@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import pageObjects.LoginationPage;
 
 import static pageObjects.AbstractPage.getElement;
+import static pageObjects.AbstractPage.getElementWithLoop;
 import static pageObjects.AbstractPage.isDisplayed;
 
 public class LoginationBO {
@@ -17,7 +18,7 @@ public class LoginationBO {
 
     public void logIn(String email, String password){
 
-        getElement(loginationPage.signInForm).click();
+        getElementWithLoop(loginationPage.signInForm).click();
         getElement(loginationPage.mailInput).sendKeys(email);
         getElement(loginationPage.passwordInput).sendKeys(password);
         getElement(loginationPage.signInButton).click();
@@ -42,14 +43,5 @@ public class LoginationBO {
 
         return getElement(loginationPage.errorMessage);
     }
-
-// using @FindBy annotation-
-
-//    public void logIn(String email, String password){
-//        loginationPage.click();
-//        loginationPage.mailInput.sendKeys(email);
-//        loginationPage.passwordInput.sendKeys(password);
-//        loginationPage.signInButton.click();
-//    }
 
 }

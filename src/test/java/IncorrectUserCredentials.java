@@ -14,10 +14,10 @@ public class IncorrectUserCredentials extends BaseTest{
 
         loginationBO.logIn("ivanhorintest@gmail.com", "WRONG__Password");
 
-//        Assert.assertTrue(
-//                loginationBO.isErrorMessageDisplayed(), "Error message is NOT displayed");
+        Assert.assertTrue(
+                loginationBO.isErrorMessageDisplayed(), "Error message is NOT displayed.  "  );
 
         Assert.assertEquals("Ошибка авторизации. Пожалуйста, попробуйте еще раз.",
-                loginationBO.getErrorMessage().getText());
+                loginationBO.getErrorMessage().getText(), "Actual error message is not equal to expected.  ");
     }
 }
