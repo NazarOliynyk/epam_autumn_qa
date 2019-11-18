@@ -3,13 +3,11 @@ package businessObjects;
 
 import org.openqa.selenium.WebElement;
 import pageObjects.LocationsPage;
-import pageObjects.NewsPage;
 import java.util.List;
-
 import static driver.DriverFactory.getExecutor;
 import static pageObjects.AbstractPage.getElement;
 import static pageObjects.AbstractPage.getElements;
-//import static pageObjects.AbstractPage.executeElementWithJS;
+
 
 public class LocationPageBO {
 

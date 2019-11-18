@@ -3,7 +3,7 @@ package enums;
 public enum DriverLocations {
 
     CHROME_DRIVER_LOCATION("src/main/resources/chromedriver.exe"),
-    FIREFOX_DRIVER_LOCATION("src/main/resources/chromedriver.exe");
+    FIREFOX_DRIVER_LOCATION("src/main/resources/firefoxdriver.exe");
 
     public String getValue() {
 

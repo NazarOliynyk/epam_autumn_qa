@@ -38,7 +38,7 @@ public abstract class AbstractPage {
         return webElement;
     }
 
-    public static void executeElementWithTimeout(By locator) {
+    protected static void executeElementWithTimeout(By locator) {
 
         try {
             Thread.sleep(3000);
