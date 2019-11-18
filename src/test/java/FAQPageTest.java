@@ -22,7 +22,7 @@ public class FAQPageTest extends BaseTest{
 
         faqPageBO.getToFAQ();
 
-        Assert.assertEquals(11, faqPageBO.getFAQItems().size(),
+        Assert.assertEquals(faqPageBO.getFAQItems().size(),11,
                 "Actual quantity of items is not equal to expected. ");
 
         Assert.assertEquals("When does program registration start?",

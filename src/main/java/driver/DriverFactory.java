@@ -13,7 +13,7 @@ public class DriverFactory {
 
     private static WebDriver driver;
 
-   public static void buildDriver(final String browserName){
+    public static void buildDriver(final String browserName){
 
         if(browserName.equalsIgnoreCase(Drivers.CHROME_DRIVER.getValue())){
             System.setProperty(Drivers.CHROME_DRIVER.getValue(),
@@ -32,12 +32,12 @@ public class DriverFactory {
 
     public static WebDriver getDriver() {
 
-       return driver;
+        return driver;
     }
 
     public static JavascriptExecutor getExecutor() {
 
-       return (JavascriptExecutor)driver;
+        return (JavascriptExecutor)driver;
     }
 
     public static void quitDriver(){

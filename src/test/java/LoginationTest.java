@@ -19,7 +19,7 @@ public class LoginationTest extends BaseTest{
                 loginationBO.isUserCredentialsDisplayed(), "User credentials are NOT displayed.  ");
 
         Assert.assertEquals(
-                "ivanhorintest", loginationBO.getUserCredentials().getText(), "Actual user credentials are not equal to expected.  ");
+                loginationBO.getUserCredentials().getText(),"ivanhorintest",  "Actual user credentials are not equal to expected.  ");
     }
 
 }

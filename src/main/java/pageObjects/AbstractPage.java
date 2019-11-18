@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class AbstractPage {
 
-     private static FluentWait<WebDriver> wait = new FluentWait<>(DriverFactory.getDriver())
+    private static FluentWait<WebDriver> wait = new FluentWait<>(DriverFactory.getDriver())
             .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
 
     public void goToPageURL(final String url) {
