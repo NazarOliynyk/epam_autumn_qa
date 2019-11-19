@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 
 public abstract class BaseTest  {
 
+
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
         DriverFactory.buildDriver(Drivers.CHROME_DRIVER.getValue());

@@ -1,0 +1,15 @@
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="epam_autumn_qa" verbose="1">-->
+<suite name="TestSuite" thread-count="6" parallel="methods" >
+    <test name="training_project_pom">
+        <classes>
+            <class name="LoginationTest" />
+            <class name="IncorrectUserCredentialsTest" />
+            <class name="LocationPageTest" />
+            <class name="NewsPageTest" />
+            <class name="TrainingsPageTest" />
+            <class name="FAQPageTest" />
+        </classes>
+    </test>
+</suite>

@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import sources.PropertyFileHandler;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,9 +25,9 @@ public class DriverFactory {
                     DriverLocations.FIREFOX_DRIVER_LOCATION.getValue());
             driver=new FirefoxDriver();
         }
-
+        new PropertyFileHandler().getProps();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }
 

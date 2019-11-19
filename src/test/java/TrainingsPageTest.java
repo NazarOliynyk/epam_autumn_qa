@@ -4,6 +4,9 @@ import enums.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static sources.PropertyFileHandler.getEmail;
+import static sources.PropertyFileHandler.getPassword;
+
 public class TrainingsPageTest extends BaseTest{
 
     @Test(description = "Verify 'Trainings' search works properly with searching in 'Skills'\"")
@@ -16,7 +19,7 @@ public class TrainingsPageTest extends BaseTest{
 
         loginationBO.goToPageURL(URLs.HOME_PAGE_URL.getValue());
 
-        loginationBO.logIn("ivanhorintest@gmail.com", "ivanhorintestPassword");
+        loginationBO.logIn(getEmail(), getPassword());
 
         trainingsPageBO.getSkillsSearchResult("Minsk", "Java")
                 .forEach(element -> Assert.assertTrue(element.getText().contains("JAVA"),

@@ -16,11 +16,11 @@ public class NewsPageBO extends AbstractPage {
                 .executeScript("arguments[0].click();",
                         getElement(newsPage.newsButton));
 
-        getElement(newsPage.successStoriesButton).click();
+        newsPage.clickSuccessStoriesButton();
         executeElementWithTimeout(newsPage.materialsButton);
         executeElementWithTimeout(newsPage.videosButton);
         executeElementWithTimeout(newsPage.newsBigButton);
-        getElement(newsPage.materialsButton).click();
+        newsPage.clickMaterialsButton();
 
         return getElements(newsPage.skillsSearchResultsList);
     }

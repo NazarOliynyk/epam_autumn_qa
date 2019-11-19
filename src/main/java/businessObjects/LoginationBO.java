@@ -17,11 +17,10 @@ public class LoginationBO {
 
 
     public void logIn(String email, String password){
-
-        getElementWithLoop(loginationPage.signInForm).click();
-        getElement(loginationPage.mailInput).sendKeys(email);
-        getElement(loginationPage.passwordInput).sendKeys(password);
-        getElement(loginationPage.signInButton).click();
+        loginationPage.openSignInForm();
+        loginationPage.inputMail(email);
+        loginationPage.inputPassword(password);
+        loginationPage.signIn();
     }
 
     public boolean isUserCredentialsDisplayed(){

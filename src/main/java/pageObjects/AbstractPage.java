@@ -32,6 +32,7 @@ public abstract class AbstractPage {
                         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
                 i= 10;
             }catch (Exception e){
+                System.out.println(i);
                 i++;
             }
         }

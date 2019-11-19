@@ -1,10 +1,11 @@
 import businessObjects.FAQPageBO;
 import businessObjects.LoginationBO;
-import businessObjects.NewsPageBO;
 import enums.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.FAQPAge;
+
+import static sources.PropertyFileHandler.getEmail;
+import static sources.PropertyFileHandler.getPassword;
 
 public class FAQPageTest extends BaseTest{
 
@@ -18,7 +19,7 @@ public class FAQPageTest extends BaseTest{
 
         loginationBO.goToPageURL(URLs.MAIN_URL.getValue());
 
-        loginationBO.logIn("ivanhorintest@gmail.com", "ivanhorintestPassword");
+        loginationBO.logIn(getEmail(), getPassword());
 
         faqPageBO.getToFAQ();
 

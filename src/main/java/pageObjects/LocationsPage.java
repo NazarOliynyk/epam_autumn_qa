@@ -10,4 +10,12 @@ public class LocationsPage extends AbstractPage{
     public By citySelect   = By.xpath("//li[descendant::text()[contains(., \"Lviv\")]]/label");
     public By lvivPositions  = By.xpath("//*[@id=\"training\"]/div[4]/div/div/div[3]");
 
+
+    public void selectCountry(){
+        getElement(countrySelect).click();
+    }
+
+    public void selectCity(){
+        getElement(citySelect).click();
+    }
 }
