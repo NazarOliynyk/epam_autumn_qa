@@ -9,8 +9,13 @@ import java.util.List;
 
 public abstract class AbstractPage {
 
-    private static FluentWait<WebDriver> wait = new FluentWait<>(DriverFactory.getDriver())
-            .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
+    private static FluentWait<WebDriver> newWait(){
+        return  new FluentWait<>(DriverFactory.getDriver())
+                .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
+    }
+
+//    private  FluentWait<WebDriver> wait = new FluentWait<>(DriverFactory.getDriver())
+//            .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
 
     public void goToPageURL(final String url) {
 
@@ -19,7 +24,7 @@ public abstract class AbstractPage {
 
     public static WebElement getElement(By locator) {
 
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return newWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public static WebElement getElementWithLoop(By locator) {
@@ -29,7 +34,7 @@ public abstract class AbstractPage {
         while (i<10){
             try{
                 webElement =
-                        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+                        newWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
                 i= 10;
             }catch (Exception e){
                 System.out.println(i);
@@ -43,7 +48,7 @@ public abstract class AbstractPage {
 
         try {
             Thread.sleep(3000);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).click();
+            newWait().until(ExpectedConditions.visibilityOfElementLocated(locator)).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

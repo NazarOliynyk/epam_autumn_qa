@@ -7,14 +7,14 @@ import java.lang.reflect.Method;
 public abstract class BaseTest  {
 
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeMethod
     public void beforeMethod() {
         DriverFactory.buildDriver(Drivers.CHROME_DRIVER.getValue());
 
     }
 
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod
     public  void afterMethod(final Method method){
 
         DriverFactory.quitDriver();

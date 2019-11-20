@@ -16,8 +16,8 @@ public class IncorrectUserCredentialsTest extends BaseTest{
 
         loginationBO.logIn(getEmail(), "WRONG__Password");
 
-        Assert.assertTrue(
-                loginationBO.isErrorMessageDisplayed(), "Error message is NOT displayed.  "  );
+//        Assert.assertTrue(
+//                loginationBO.isErrorMessageDisplayed(), "Error message is NOT displayed.  "  );
 
         Assert.assertEquals(loginationBO.getErrorMessage().getText(),
                 "Ошибка авторизации. Пожалуйста, попробуйте еще раз.",
