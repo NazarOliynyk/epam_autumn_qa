@@ -23,6 +23,10 @@ public class Author {
         this.authorDescription = authorDescription;
     }
 
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
+
     public Long getAuthorId() {
         return authorId;
     }

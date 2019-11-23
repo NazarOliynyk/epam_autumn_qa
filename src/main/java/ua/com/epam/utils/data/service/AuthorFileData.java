@@ -22,7 +22,7 @@ import static ua.com.epam.utils.JsonKeys.*;
 public class AuthorFileData implements AuthorData {
     private static Logger log = Logger.getLogger(AuthorFileData.class);
 
-    private String filePath = "src/test/resources/test-data/authors";
+    private String filePath = "src/test/resources/test-data/authors.txt";
     private Gson g = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
 
     /**
