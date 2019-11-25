@@ -10,6 +10,9 @@ public interface JsonKeys {
     String AUTHOR_DESCRIPTION = "authorDescription";
     String AUTHOR_NATIONALITY = "nationality";
 
+    String GENRE_ID = "genreId";
+    String BOOK_ID = "bookId";
+
     String ASCENDING = "asc";
     String DESCENDING = "desc";
 }

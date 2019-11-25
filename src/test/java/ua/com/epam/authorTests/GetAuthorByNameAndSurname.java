@@ -1,17 +1,9 @@
 package ua.com.epam.authorTests;
 
-import com.google.gson.reflect.TypeToken;
-import org.apache.http.client.utils.URIBuilder;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ua.com.epam.BaseTest;
-import ua.com.epam.entity.author.Author;
-
-import java.lang.reflect.Type;
-import java.util.List;
-
-import static ua.com.epam.config.URI.SEARCH_FOR_EXISTED_AUTHORS_ARR;
 
 @Test
 public class GetAuthorByNameAndSurname extends BaseTest {

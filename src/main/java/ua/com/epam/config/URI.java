@@ -13,4 +13,14 @@ public interface URI {
     String POST_AUTHOR_SINGLE_OBJ = "/api/library/author";
     String PUT_AUTHOR_SINGLE_OBJ = "/api/library/author/%s";
     String DELETE_AUTHOR_SINGLE_OBJ = "/api/library/author/%s";
+
+    String POST_BOOK_SINGLE_OBJ = "/api/library/book/%s/%s";
+    String GET_BOOK_SINGLE_OBJ = "/api/library/book/%s";
+    String GET_ALL_BOOKS_ARR = "/api/library/books";
+    String DELETE_BOOK_SINGLE_OBJ = "/api/library/book/%s";
+
+    String GET_GENRE_SINGLE_OBJ = "/api/library/genre/%s";
+    String POST_GENRE_SINGLE_OBJ = "/api/library/genre";
+    String GET_ALL_GENRES_ARR = "/api/library/genres";
+    String DELETE_GENRE_SINGLE_OBJ = "/api/library/genre/%s";
 }

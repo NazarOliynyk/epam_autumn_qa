@@ -1,11 +1,7 @@
 package ua.com.epam.service;
 
-import com.google.gson.reflect.TypeToken;
-import org.apache.http.client.utils.URIBuilder;
 import ua.com.epam.entity.author.Author;
 import ua.com.epam.entity.author.nested.Name;
-
-import java.lang.reflect.Type;
 import java.util.List;
 
 import static ua.com.epam.config.URI.*;
@@ -52,7 +48,7 @@ public class AuthorService extends AbstractService{
     // GetAuthorByNameAndSurname
     public List<Author> getAuthorByInitials(String value) {
 
-        String paramsOne = new URIBuilder().
+        String paramsOne = uriBuilder.
                 setParameter("query", value)
                 .toString();
         client.get(SEARCH_FOR_EXISTED_AUTHORS_ARR + paramsOne);
@@ -66,7 +62,7 @@ public class AuthorService extends AbstractService{
                                     boolean pagination,
                                     int size,
                                     String sortBy){
-        String params = new URIBuilder()
+        String params = uriBuilder
                 .setParameter("orderType", orderType)
                 .setParameter("page", String.valueOf(page))
                 .setParameter("pagination", String.valueOf(pagination))
