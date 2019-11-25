@@ -5,20 +5,14 @@ package ua.com.epam.authorTests;
 //import com.fasterxml.jackson.databind.JsonNode;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.google.gson.reflect.TypeToken;
-import org.apache.http.client.utils.URIBuilder;
-import org.json.JSONArray;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ua.com.epam.BaseTest;
 import ua.com.epam.entity.author.Author;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
-import static ua.com.epam.config.URI.GET_ALL_AUTHORS_ARR;
-import static ua.com.epam.utils.JsonKeys.ASCENDING;
 import static ua.com.epam.utils.JsonKeys.DESCENDING;
 
 @Test

@@ -26,9 +26,37 @@ public class AuthorDBData implements AuthorData {
     private ResultSet resultSet;
     private DataProp dp;
 
-    public AuthorDBData() {
+    AuthorDBData() {
         this.connection = MySQLClient.getConnection();
         this.dp = new DataProp();
+    }
+
+    void insertAuthor(Author author) {
+        log.info("Try to insert one  Author...");
+        execute(String.format(INSERT_AUTHOR, dp.dbName(), AUTHOR,
+                author.getAuthorId(),
+                author.getAuthorName().getFirst(),
+                author.getAuthorName().getSecond(),
+                author.getBirth().getCity(),
+                author.getBirth().getCountry(),
+                author.getBirth().getDate(),
+                author.getAuthorDescription(),
+                author.getNationality()));
+
+//        try {
+//            if (!resultSet.next()) {
+//                log.error("No one author was found! Author table is empty!");
+//            } else {
+//                a = mapResultSetObjToAuthor(resultSet);
+//                log.info("Author with authorId = " + a.getAuthorId() + " was found!");
+//            }
+//        } catch (SQLException e) {
+//            log.error("DB access error occurs or method is called on a closed ResultSet!!!");
+//            e.printStackTrace();
+//        }
+
+        close();
+
     }
 
     @Override

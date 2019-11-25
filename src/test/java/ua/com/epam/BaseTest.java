@@ -1,7 +1,5 @@
 package ua.com.epam;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ua.com.epam.core.rest.RestClient;
@@ -12,9 +10,8 @@ import ua.com.epam.service.BookService;
 import ua.com.epam.service.CleanUpService;
 import ua.com.epam.service.GenreService;
 import ua.com.epam.utils.DataFactory;
-import ua.com.epam.utils.helpers.LocalDateAdapter;
 import ua.com.epam.service.AuthorService;
-import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Random;
 
@@ -24,6 +21,8 @@ import static ua.com.epam.config.URI.POST_GENRE_SINGLE_OBJ;
 public class BaseTest {
 
     private RestClient client = new RestClient();
+
+    // Data source is changed DataFactory
     private DataFactory testData = new DataFactory();
     private CleanUpService clean = new CleanUpService(client);
 

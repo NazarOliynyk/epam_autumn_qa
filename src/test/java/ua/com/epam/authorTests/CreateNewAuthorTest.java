@@ -12,8 +12,8 @@ public class CreateNewAuthorTest extends BaseTest {
     @Test(description = "Post a single Author obj")
     public void postAuthor() {
 
-//        System.out.println("randomeAuthor.getAuthorId():"+randomeAuthor.getAuthorId());
-//        System.out.println("randomeAuthor.getAuthorName().getFirst(): "+randomeAuthor.getAuthorName().getFirst());
+        System.out.println("randomeAuthor.getAuthorId():"+randomeAuthor.getAuthorId());
+        System.out.println("randomeAuthor.getAuthorName().getFirst(): "+randomeAuthor.getAuthorName().getFirst());
 
         authorService.postAuthor(randomeAuthor);
         // 201 - Created
@@ -36,7 +36,7 @@ public class CreateNewAuthorTest extends BaseTest {
          Assert.assertEquals(authorService.getStatusCode(), 201);
 
 
-//        System.out.println("authorService.getActAuthor().getAuthorId():"+authorService.getActAuthor().getAuthorId());
-//        System.out.println("authorService.getActAuthor().getAuthorName().getFirst(): "+authorService.getActAuthor().getAuthorName().getFirst());
+        System.out.println("authorService.getActAuthor().getAuthorId():"+authorService.getActAuthor().getAuthorId());
+        System.out.println("authorService.getActAuthor().getAuthorName().getFirst(): "+authorService.getActAuthor().getAuthorName().getFirst());
     }
 }
