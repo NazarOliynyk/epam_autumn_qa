@@ -2,10 +2,7 @@ package ua.com.epam.core.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpHeaders;
-import org.apache.http.HttpResponse;
-import org.apache.http.ParseException;
+import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
@@ -16,6 +13,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
+import org.codehaus.groovy.runtime.metaclass.MetaMethodIndex;
 import org.testng.Assert;
 import ua.com.epam.entity.Response;
 import ua.com.epam.utils.helpers.LocalDateAdapter;
@@ -23,6 +21,8 @@ import ua.com.epam.utils.helpers.LocalDateAdapter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import static ua.com.epam.config.URI.BASE_URI;
 
@@ -37,6 +37,8 @@ public class RestClient {
 
     //JSON parser with right Date format parsing specifying
     private Gson g = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
+
+    private String authorization;
 
     public Response getResponse() {
         return this.response;
@@ -82,6 +84,17 @@ public class RestClient {
 
             log.info("Perform POST request to: " + request.getURI().toString());
             response = client.execute(request);
+
+
+
+            Header[] headerList = request.getAllHeaders();
+            for (Header header : headerList) {
+                if(header.getName().equals("Authorization")){
+                    authorization = header.getValue();
+                }
+            }
+
+
         } catch (UnsupportedEncodingException e) {
             log.error("The Character Encoding is not supported!");
             e.printStackTrace();
