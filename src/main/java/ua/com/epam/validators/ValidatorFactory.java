@@ -5,10 +5,12 @@ public class ValidatorFactory {
     public AuthorValidator authorValidator(){
         return new AuthorValidator();
     }
-    BookValidator bookValidator(){
+    public BookValidator bookValidator(){
+
         return new BookValidator();
     }
-    GenreValidator genreValidator(){
+    public GenreValidator genreValidator(){
+
         return new GenreValidator();
     }
 }

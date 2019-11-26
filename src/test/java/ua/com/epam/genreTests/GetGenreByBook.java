@@ -1,11 +1,12 @@
-package ua.com.epam.bookTests;
+package ua.com.epam.genreTests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ua.com.epam.BaseTest;
 
 @Test
-public class GetBookByIdTest extends BaseTest {
+public class GetGenreByBook extends BaseTest {
+
 
     @BeforeMethod
     public void sendAuthorsAndGenres() {
@@ -20,11 +21,12 @@ public class GetBookByIdTest extends BaseTest {
         sendAllBooks();
     }
 
+    public void GetGenreByBookId(){
 
-    @Test(description = "Get a single Book obj ")
-    public void getBookById() {
-
-        validatorFactory.bookValidator().getBookById(randomBook);
+        randomBook.setBookId(5000);
+        validatorFactory.genreValidator().
+                getGenreByBookId(randomBook,
+                        randomeAuthor,
+                        randomGenre);
     }
-
 }

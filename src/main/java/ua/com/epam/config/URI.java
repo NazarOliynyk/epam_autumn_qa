@@ -23,4 +23,7 @@ public interface URI {
     String POST_GENRE_SINGLE_OBJ = "/api/library/genre";
     String GET_ALL_GENRES_ARR = "/api/library/genres";
     String DELETE_GENRE_SINGLE_OBJ = "/api/library/genre/%s";
+    String GET_GENRE_BY_BOOK = "/api/library/book/%s/genre";
+
+    //api/library/book/222/genre
 }
