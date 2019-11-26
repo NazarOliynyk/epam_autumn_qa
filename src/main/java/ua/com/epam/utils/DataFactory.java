@@ -12,8 +12,8 @@ public class DataFactory {
 
     public AuthorData authors() {
 
-        return new AuthorFileData();
-//        return new AuthorDBData();
+//        return new AuthorFileData();
+        return new AuthorDBData();
     }
 
     public BookData books() {

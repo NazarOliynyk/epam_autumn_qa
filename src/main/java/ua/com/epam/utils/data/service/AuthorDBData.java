@@ -26,7 +26,7 @@ public class AuthorDBData implements AuthorData {
     private ResultSet resultSet;
     private DataProp dp;
 
-    AuthorDBData() {
+    public AuthorDBData() {
         this.connection = MySQLClient.getConnection();
         this.dp = new DataProp();
     }

@@ -1,67 +1,61 @@
 package ua.com.epam.service;
 
+import ua.com.epam.entity.Response;
 import ua.com.epam.entity.author.Author;
 import ua.com.epam.entity.author.nested.Name;
-import java.util.List;
-
 import static ua.com.epam.config.URI.*;
 
 public class AuthorService extends AbstractService{
     //you are the painter, so paint something here))
 
     // GetAuthorByIdTest
-    public void getAuthor(int authorId) {
-         client.get(String.format(GET_AUTHOR_SINGLE_OBJ, authorId));
-         statusCode = client.getResponse().getStatusCode();
-         actAuthor = g.fromJson(client.getResponse().getBody(), Author.class);
+
+    public Response getAuthor(long authorId) {
+        client.get(String.format(GET_AUTHOR_SINGLE_OBJ, authorId));
+        return client.getResponse();
     }
 
-    // CreateNewAuthorTest
-    public void postAuthor(Author randomeAuthor) {
-         client.post(POST_AUTHOR_SINGLE_OBJ, randomeAuthor);
-         statusCode = client.getResponse().getStatusCode();
-         actAuthor = g.fromJson(client.getResponse().getBody(), Author.class);
+    //CreateNewAuthor
+    public Response postAuthor(Author randomeAuthor) {
+        client.post(POST_AUTHOR_SINGLE_OBJ, randomeAuthor);
+        return client.getResponse();
     }
 
-    // DeleteExistedAuthorTest
-    public int statusCodeDelete(Author randomeAuthor){
-        client.delete(String.format(DELETE_AUTHOR_SINGLE_OBJ, randomeAuthor.getAuthorId()));
-        return client.getResponse().getStatusCode();
-    }
-
-    public int statusCodeGet(Author randomeAuthor){
-        client.get(String.format(GET_AUTHOR_SINGLE_OBJ, randomeAuthor.getAuthorId()));
-        return client.getResponse().getStatusCode();
+    //DeleteExistingAuthor
+    public Response deleteAuthor(long authorId){
+        client.delete(String.format(DELETE_AUTHOR_SINGLE_OBJ, authorId));
+        return client.getResponse();
     }
 
     // UpdateExistingAuthor
-    public void updateAuthor(Author randomeAuthor, long newId, String newFN, String newSN) {
+    public Response updateAuthor(Author author,
+                                 long newId,
+                                 String newFN,
+                                 String newSN) {
 
-        long randomeId = randomeAuthor.getAuthorId();
-        randomeAuthor.setAuthorName(new Name(newFN, newSN));
-        randomeAuthor.setAuthorId(newId);
-        client.put(String.format(PUT_AUTHOR_SINGLE_OBJ, randomeId), randomeAuthor);
-        statusCode = client.getResponse().getStatusCode();
-        actAuthor = g.fromJson(client.getResponse().getBody(), Author.class);
+        long authorId = author.getAuthorId();
+        author.setAuthorName(new Name(newFN, newSN));
+        author.setAuthorId(newId);
+        client.put(String.format(PUT_AUTHOR_SINGLE_OBJ, authorId), author);
+        return client.getResponse();
     }
 
     // GetAuthorByNameAndSurname
-    public List<Author> getAuthorByInitials(String value) {
+    public Response getAuthorListByInitials(String value) {
 
         String paramsOne = uriBuilder.
                 setParameter("query", value)
                 .toString();
         client.get(SEARCH_FOR_EXISTED_AUTHORS_ARR + paramsOne);
-        statusCode = client.getResponse().getStatusCode();
-        return g.fromJson(client.getResponse().getBody(), type);
-
+        return client.getResponse();
     }
 
-    public List<Author> grtAuthorsByParams(String orderType,
-                                    int page,
-                                    boolean pagination,
-                                    int size,
-                                    String sortBy){
+    //GetAuthorsWithOptions
+    public Response getAuthorListByParams(String orderType,
+                                           int page,
+                                           boolean pagination,
+                                           int size,
+                                           String sortBy){
         String params = uriBuilder
                 .setParameter("orderType", orderType)
                 .setParameter("page", String.valueOf(page))
@@ -70,10 +64,6 @@ public class AuthorService extends AbstractService{
                 .setParameter("sortBy", sortBy)
                 .toString();
         client.get(GET_ALL_AUTHORS_ARR + params);
-        statusCode = client.getResponse().getStatusCode();
-
-        return g.fromJson(client.getResponse().getBody(), type);
+        return client.getResponse();
     }
-
-
 }

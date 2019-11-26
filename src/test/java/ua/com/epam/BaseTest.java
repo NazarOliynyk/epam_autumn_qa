@@ -11,6 +11,7 @@ import ua.com.epam.service.CleanUpService;
 import ua.com.epam.service.GenreService;
 import ua.com.epam.utils.DataFactory;
 import ua.com.epam.service.AuthorService;
+import ua.com.epam.validators.ValidatorFactory;
 
 import java.util.List;
 import java.util.Random;
@@ -22,11 +23,11 @@ public class BaseTest {
 
     private RestClient client = new RestClient();
 
-    // Data source is changed DataFactory
+    // Data source for Authors is changed DataFactory to MySQL DB
     private DataFactory testData = new DataFactory();
     private CleanUpService clean = new CleanUpService(client);
 
-    protected AuthorService authorService = new AuthorService();
+   // protected AuthorService authorService = new AuthorService();
     protected Author randomeAuthor = testData.authors().getRandomOne();
     private List<Author> authorList = testData.authors().getDefaultAuthors();
 
@@ -38,7 +39,7 @@ public class BaseTest {
     protected Genre randomGenre = testData.genres().getRandomGenre();
     private List<Genre> genreList = testData.genres().getDefaultGenres();
 
-
+    protected ValidatorFactory validatorFactory = new ValidatorFactory();
 
      protected void sendAllAuthors(){
         for(Author a : authorList) {

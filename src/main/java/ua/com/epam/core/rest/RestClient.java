@@ -38,7 +38,7 @@ public class RestClient {
     //JSON parser with right Date format parsing specifying
     private Gson g = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
 
-    private String authorization;
+
 
     public Response getResponse() {
         return this.response;
@@ -84,15 +84,6 @@ public class RestClient {
 
             log.info("Perform POST request to: " + request.getURI().toString());
             response = client.execute(request);
-
-
-
-            Header[] headerList = request.getAllHeaders();
-            for (Header header : headerList) {
-                if(header.getName().equals("Authorization")){
-                    authorization = header.getValue();
-                }
-            }
 
 
         } catch (UnsupportedEncodingException e) {
