@@ -60,31 +60,32 @@ public class BaseTest {
                     authorList.get(new Random().nextInt(10)).getAuthorId(),
                     genreList.get(new Random().nextInt(5)).getGenreId());
         }
-
-//        System.out.println("bookList.size(): "+bookList.size());
-//        bookService.postSingleBook(bookList.get(0), authorList.get(4).getAuthorId(), genreList.get(1).getGenreId());
-//        bookService.postSingleBook(bookList.get(1), authorList.get(9).getAuthorId(), genreList.get(2).getGenreId());
-//        bookService.postSingleBook(bookList.get(2), authorList.get(5).getAuthorId(), genreList.get(0).getGenreId());
-//        bookService.postSingleBook(bookList.get(3), authorList.get(8).getAuthorId(), genreList.get(3).getGenreId());
-//        bookService.postSingleBook(bookList.get(4), authorList.get(0).getAuthorId(), genreList.get(4).getGenreId());
-//        bookService.postSingleBook(bookList.get(5), authorList.get(7).getAuthorId(), genreList.get(1).getGenreId());
-//        bookService.postSingleBook(bookList.get(6), authorList.get(3).getAuthorId(), genreList.get(0).getGenreId());
-//        bookService.postSingleBook(bookList.get(7), authorList.get(1).getAuthorId(), genreList.get(4).getGenreId());
-//        bookService.postSingleBook(bookList.get(8), authorList.get(4).getAuthorId(), genreList.get(1).getGenreId());
-//        bookService.postSingleBook(bookList.get(9), authorList.get(4).getAuthorId(), genreList.get(1).getGenreId());
-//        bookService.postSingleBook(bookList.get(10), authorList.get(9).getAuthorId(), genreList.get(2).getGenreId());
-//        bookService.postSingleBook(bookList.get(11), authorList.get(2).getAuthorId(), genreList.get(3).getGenreId());
-//        bookService.postSingleBook(bookList.get(12), authorList.get(0).getAuthorId(), genreList.get(0).getGenreId());
-//        bookService.postSingleBook(bookList.get(13), authorList.get(3).getAuthorId(), genreList.get(3).getGenreId());
-//        bookService.postSingleBook(bookList.get(14), authorList.get(8).getAuthorId(), genreList.get(2).getGenreId());
-//        bookService.postSingleBook(bookList.get(15), authorList.get(5).getAuthorId(), genreList.get(3).getGenreId());
-//        bookService.postSingleBook(bookList.get(16), authorList.get(7).getAuthorId(), genreList.get(3).getGenreId());
-//        bookService.postSingleBook(bookList.get(17), authorList.get(2).getAuthorId(), genreList.get(4).getGenreId());
-//        bookService.postSingleBook(bookList.get(18), authorList.get(6).getAuthorId(), genreList.get(0).getGenreId());
-//        bookService.postSingleBook(bookList.get(19), authorList.get(1).getAuthorId(), genreList.get(4).getGenreId());
     }
 
+    protected void sendPrearrangedBooks(){
 
+        bookService.postSingleBook(bookList.get(0), authorList.get(4).getAuthorId(), genreList.get(1).getGenreId());
+        bookService.postSingleBook(bookList.get(1), authorList.get(9).getAuthorId(), genreList.get(3).getGenreId());
+        bookService.postSingleBook(bookList.get(2), authorList.get(5).getAuthorId(), genreList.get(0).getGenreId());
+        bookService.postSingleBook(bookList.get(3), authorList.get(4).getAuthorId(), genreList.get(3).getGenreId());
+        bookService.postSingleBook(bookList.get(4), authorList.get(0).getAuthorId(), genreList.get(4).getGenreId());
+        bookService.postSingleBook(bookList.get(5), authorList.get(0).getAuthorId(), genreList.get(3).getGenreId());
+        bookService.postSingleBook(bookList.get(6), authorList.get(4).getAuthorId(), genreList.get(0).getGenreId());
+        bookService.postSingleBook(bookList.get(7), authorList.get(2).getAuthorId(), genreList.get(4).getGenreId());
+        bookService.postSingleBook(bookList.get(8), authorList.get(4).getAuthorId(), genreList.get(1).getGenreId());
+        bookService.postSingleBook(bookList.get(9), authorList.get(4).getAuthorId(), genreList.get(1).getGenreId());
+        bookService.postSingleBook(bookList.get(10), authorList.get(9).getAuthorId(), genreList.get(1).getGenreId());
+        bookService.postSingleBook(bookList.get(11), authorList.get(2).getAuthorId(), genreList.get(3).getGenreId());
+        bookService.postSingleBook(bookList.get(12), authorList.get(8).getAuthorId(), genreList.get(2).getGenreId());
+        bookService.postSingleBook(bookList.get(13), authorList.get(3).getAuthorId(), genreList.get(2).getGenreId());
+        bookService.postSingleBook(bookList.get(14), authorList.get(8).getAuthorId(), genreList.get(2).getGenreId());
+        bookService.postSingleBook(bookList.get(15), authorList.get(3).getAuthorId(), genreList.get(2).getGenreId());
+        bookService.postSingleBook(bookList.get(16), authorList.get(7).getAuthorId(), genreList.get(2).getGenreId());
+        bookService.postSingleBook(bookList.get(17), authorList.get(7).getAuthorId(), genreList.get(2).getGenreId());
+        bookService.postSingleBook(bookList.get(18), authorList.get(1).getAuthorId(), genreList.get(2).getGenreId());
+        bookService.postSingleBook(bookList.get(19), authorList.get(1).getAuthorId(), genreList.get(2).getGenreId());
+
+    }
 
 
     //don't delete this!!!

@@ -3,8 +3,6 @@ package ua.com.epam.service;
 import ua.com.epam.entity.Response;
 import ua.com.epam.entity.book.Book;
 
-import java.util.List;
-
 import static ua.com.epam.config.URI.*;
 
 public class BookService extends AuthorService{
@@ -33,6 +31,16 @@ public class BookService extends AuthorService{
     // DeleteExistedAuthorTest
     public Response deleteBook(long bookId){
         client.delete(String.format(DELETE_BOOK_SINGLE_OBJ, bookId));
+        return client.getResponse();
+    }
+
+    //GetAllBooksByExistingAuthor
+    public Response getBooksByAuthor(long authorId, String orderType, String sortBy){
+        String params = uriBuilder
+                .setParameter("orderType", orderType)
+                .setParameter("sortBy", sortBy)
+                .toString();
+        client.get(String.format(GET_ALL_BOOKS_BY_AUTHOR_ARR, authorId)+ params);
         return client.getResponse();
     }
 

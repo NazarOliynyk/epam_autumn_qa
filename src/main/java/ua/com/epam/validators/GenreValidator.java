@@ -1,5 +1,7 @@
 package ua.com.epam.validators;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.testng.Assert;
 import ua.com.epam.entity.Response;
 import ua.com.epam.entity.author.Author;
@@ -56,5 +58,36 @@ public class GenreValidator extends AbstractValidator{
         Assert.assertEquals(responseGetGenre.getStatusCode(), 200);
         actGenre = g.fromJson(responseGetGenre.getBody(), Genre.class);
         Assert.assertEquals(actGenre, genre);
+    }
+
+    public void updateGenre(Genre updatedGenre){
+
+        Response response = genreService.updateGenre(updatedGenre);
+        // 200 - OK
+        Assert.assertEquals(response.getStatusCode(), 200);
+        actGenre = g.fromJson(response.getBody(), Genre.class);
+
+        Assert.assertEquals(actGenre, updatedGenre);
+    }
+
+    public void getGenreByName(String twoLetter, String threeLetter) {
+
+        // there is a BadRequest looking with only 2 letters
+        Response responseTwoLetter = genreService.getGenreListByName(twoLetter);
+        Assert.assertEquals(responseTwoLetter.getStatusCode(), 400);
+
+        // there is one genre looking with 3 letters-
+        Response responseThreeLetter = genreService.getGenreListByName(threeLetter);
+        Assert.assertEquals(responseThreeLetter.getStatusCode(), 200);
+
+        JSONArray array = new JSONArray(responseThreeLetter.getBody());
+        JSONObject genre = array.getJSONObject(0);
+        // value by key-
+        String genreName = (String) genre.get("genreName");
+
+        softAssert.assertTrue(genreName.contains(threeLetter));
+        softAssert.assertEquals(array.length(), 1);
+        softAssert.assertAll();
+
     }
 }

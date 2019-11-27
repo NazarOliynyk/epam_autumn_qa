@@ -1,9 +1,9 @@
 package ua.com.epam.service;
 
 import ua.com.epam.entity.Response;
-import static ua.com.epam.config.URI.DELETE_GENRE_SINGLE_OBJ;
-import static ua.com.epam.config.URI.GET_GENRE_BY_BOOK;
-import static ua.com.epam.config.URI.GET_GENRE_SINGLE_OBJ;
+import ua.com.epam.entity.genre.Genre;
+
+import static ua.com.epam.config.URI.*;
 
 public class GenreService extends AbstractService{
 
@@ -21,6 +21,23 @@ public class GenreService extends AbstractService{
 
     public Response getGenreByBookId(long bookId){
         client.get(String.format(GET_GENRE_BY_BOOK, bookId));
+        return client.getResponse();
+    }
+
+    //UpdateExistingGenre
+    public Response updateGenre(Genre updatedGenre){
+        client.put(String.format(PUT_GENRE_SINGLE_OBJ, updatedGenre.getGenreId()),
+                updatedGenre);
+        return client.getResponse();
+    }
+
+    // GetAuthorByNameAndSurname
+    public Response getGenreListByName(String value) {
+
+        String paramsOne = uriBuilder.
+                setParameter("query", value)
+                .toString();
+        client.get(SEARCH_FOR_EXISTING_GENRE_ARR + paramsOne);
         return client.getResponse();
     }
 

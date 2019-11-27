@@ -18,12 +18,15 @@ public interface URI {
     String GET_BOOK_SINGLE_OBJ = "/api/library/book/%s";
     String GET_ALL_BOOKS_ARR = "/api/library/books";
     String DELETE_BOOK_SINGLE_OBJ = "/api/library/book/%s";
+    String GET_ALL_BOOKS_BY_AUTHOR_ARR = "/api/library/author/%s/books";
+
+//    /library/author/3232/books?orderType=asc&sortBy=bookId
 
     String GET_GENRE_SINGLE_OBJ = "/api/library/genre/%s";
     String POST_GENRE_SINGLE_OBJ = "/api/library/genre";
     String GET_ALL_GENRES_ARR = "/api/library/genres";
     String DELETE_GENRE_SINGLE_OBJ = "/api/library/genre/%s";
     String GET_GENRE_BY_BOOK = "/api/library/book/%s/genre";
-
-    //api/library/book/222/genre
+    String PUT_GENRE_SINGLE_OBJ = "/api/library/genre/%s";
+    String SEARCH_FOR_EXISTING_GENRE_ARR = "/api/library/genres/search";
 }

@@ -23,6 +23,8 @@ abstract class AbstractValidator {
     GenreService genreService = new GenreService();
 
     Type type = new TypeToken<List<Author>>(){}.getType();
+    Type typeGenre = new TypeToken<List<Genre>>(){}.getType();
+    Type typeBook = new TypeToken<List<Book>>(){}.getType();
 
     Gson g = new GsonBuilder()
             .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())

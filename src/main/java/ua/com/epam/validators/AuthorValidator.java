@@ -4,10 +4,13 @@ import com.google.common.collect.Ordering;
 import org.testng.Assert;
 import ua.com.epam.entity.Response;
 import ua.com.epam.entity.author.Author;
+import ua.com.epam.entity.book.Book;
+import ua.com.epam.entity.genre.Genre;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+import static ua.com.epam.utils.JsonKeys.ASCENDING;
+import static ua.com.epam.utils.JsonKeys.BOOK_ID;
 
 
 public class AuthorValidator extends AbstractValidator{
@@ -133,10 +136,10 @@ public class AuthorValidator extends AbstractValidator{
                         pagination,
                         size,
                         sortBy);
-        List<Author> authorList = g.fromJson(response.getBody(), type);
-//
         //200 -ok
         Assert.assertEquals(response.getStatusCode(), 200);
+
+        List<Author> authorList = g.fromJson(response.getBody(), type);
         List<Integer> idList = new ArrayList<>();
         authorList.forEach(author -> idList.add(author.getAuthorId().intValue()));
 
@@ -147,4 +150,61 @@ public class AuthorValidator extends AbstractValidator{
 //        Assert.assertTrue(Ordering.natural().isOrdered(idList));(idList));
     }
 
+    public void getAuthorByBookId(Book book, Author author, Genre genre){
+
+        // saving a random book with changed id for incoming author and genre-
+        Response responsePostBook = bookService.postSingleBook(book,
+                author.getAuthorId(),
+                genre.getGenreId());
+        // 201 - created
+        Assert.assertEquals(responsePostBook.getStatusCode(), 201);
+
+        // getting an author by bookId
+        Response responseGetAuthor = authorService.getAuthorByBookId(book.getBookId());
+        //200 -ok
+        Assert.assertEquals(responseGetAuthor.getStatusCode(), 200);
+        actAuthor = g.fromJson(responseGetAuthor.getBody(), Author.class);
+        Assert.assertEquals(actAuthor, author);
+    }
+
+
+
+    public void getAuthorsInGenre(long genreId){
+
+        Response response = authorService.getAuthorsInGenre(genreId);
+        // 200 - OK
+        Assert.assertEquals(response.getStatusCode(), 200);
+        // all authors of certain genre-
+        List<Author> authorListByGenre = g.fromJson(response.getBody(), type);
+        // map of authors and their books
+        Map<Author, List<Book>> booksByGenreMap = new HashMap<>();
+
+        authorListByGenre.forEach(author->
+                booksByGenreMap.put(author,
+                        g.fromJson(bookService.getBooksByAuthor(
+                        author.getAuthorId(),
+                        ASCENDING,
+                        BOOK_ID).
+                        getBody(), typeBook)));
+
+        // List of books of those authors-
+        List<Book> booksByGenreList = new ArrayList<>();
+
+        for (Map.Entry<Author, List<Book>> entry : booksByGenreMap.entrySet()) {
+
+                for (Object o : entry.getValue().toArray()) {
+                    booksByGenreList.add((Book) o);
+                    System.out.println(((Book) o).getBookName());
+                }
+        }
+
+        // List of genres of those books-
+        List<Genre> genres = new ArrayList<>();
+        booksByGenreList.forEach( book ->
+                genres.add(g.fromJson(genreService.
+                        getGenreByBookId(book.getBookId()).getBody(), Genre.class)));
+
+        genres.forEach(genre -> Assert.assertEquals(genre.getGenreId().intValue(), genreId));
+
+    }
 }

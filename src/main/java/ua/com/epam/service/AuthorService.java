@@ -66,4 +66,16 @@ public class AuthorService extends AbstractService{
         client.get(GET_ALL_AUTHORS_ARR + params);
         return client.getResponse();
     }
+
+    //GetAuthorByBookId
+    public Response getAuthorByBookId(long bookId){
+        client.get(String.format(GET_AUTHOR_OF_BOOK_OBJ, bookId));
+        return client.getResponse();
+    }
+
+    //GetAuthorsOfExistingGenre
+    public Response getAuthorsInGenre(long generId){
+        client.get(String.format(GET_ALL_AUTHORS_IN_GENRE_ARR, generId));
+        return client.getResponse();
+    }
 }

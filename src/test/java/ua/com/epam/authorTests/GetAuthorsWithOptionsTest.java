@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ua.com.epam.BaseTest;
 
+import static ua.com.epam.utils.JsonKeys.AUTHOR_ID;
 import static ua.com.epam.utils.JsonKeys.DESCENDING;
 
 @Test
@@ -29,7 +30,7 @@ public class GetAuthorsWithOptionsTest extends BaseTest {
                 1,
                 true,
                 10,
-                "authorId");
+                AUTHOR_ID);
     }
 
 }
